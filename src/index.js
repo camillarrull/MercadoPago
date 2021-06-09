@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Agrega credenciales
 //ACA IRIA LA REAL
 mercadopago.configure({
-    access_token: "APP_USR-1706284498358888-060813-b879518e65102d920c6a1b7aae59f1cd-134341486"
+    access_token: "APP_USR-4156353893147073-060817-79fb32f7510503cec7c76a70cc6da56a-772344190"
 });
 
 //ROUTES
