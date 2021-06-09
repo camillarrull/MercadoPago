@@ -61,4 +61,6 @@ var httpsServer = https.createServer(credentials, app);
 httpsServer.listen(3000);
 
 console.log('[Cami-App] Hello There');
+console.log('File key: ' + __dirname + '/../ssl/selfsigned.key');
+console.log(typeof key);
 console.log(key);
