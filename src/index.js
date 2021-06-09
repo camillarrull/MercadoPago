@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 // SDK de Mercado Pago
 const mercadopago = require('mercadopago');
 const fs = require('fs');
+const { POINT_CONVERSION_COMPRESSED } = require('constants');
 
 var key = fs.readFileSync(__dirname + '/../ssl/selfsigned.key');
 var cert = fs.readFileSync(__dirname + '/../ssl/selfsigned.crt');
@@ -60,3 +61,4 @@ var httpsServer = https.createServer(credentials, app);
 httpsServer.listen(3000);
 
 console.log('[Cami-App] Hello There');
+console.log(key);
