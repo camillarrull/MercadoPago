@@ -1,8 +1,17 @@
 const express = require('express');
+const https = require('https');
 const app = express();
 const bodyParser = require('body-parser')
 // SDK de Mercado Pago
 const mercadopago = require('mercadopago');
+const fs = require('fs');
+
+var key = fs.readFileSync(__dirname + '/../ssl/selfsigned.key');
+var cert = fs.readFileSync(__dirname + '/../ssl/selfsigned.crt');
+var options = {
+  key: key,
+  cert: cert
+};
 
 //middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,6 +46,12 @@ app.post('/checkout', (req, res) => {
 })
 
 //SERVER
+/*
 app.listen(3000, () => {
 	console.log('server on port 3000')
 })
+*/
+var httpsServer = https.createServer(credentials, app);
+httpsServer.listen(3000);
+
+console.log('[Cami-App] Hello There');
