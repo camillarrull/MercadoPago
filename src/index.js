@@ -51,6 +51,11 @@ app.post('/webhook/payment', (req, res) => {
 	res.status(200);
 });
 
+app.get('/', (req, res) => {
+	console.log(req);
+	res.status(200);
+});
+
 //SERVER
 /*
 app.listen(3000, () => {
