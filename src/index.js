@@ -5,7 +5,6 @@ const bodyParser = require('body-parser')
 // SDK de Mercado Pago
 const mercadopago = require('mercadopago');
 const fs = require('fs');
-const { POINT_CONVERSION_COMPRESSED } = require('constants');
 
 var key = fs.readFileSync(__dirname + '/../ssl/selfsigned.key');
 var cert = fs.readFileSync(__dirname + '/../ssl/selfsigned.crt');
@@ -15,7 +14,7 @@ var credentials = {
 };
 
 //middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.urlencoded({ extended: false }));
 
 // Agrega credenciales
 //ACA IRIA LA REAL
