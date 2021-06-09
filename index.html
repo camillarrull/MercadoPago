@@ -28,9 +28,11 @@
                             obcaecati laboriosam repellendus, molestias sapiente possimus corrupti, officia ducimus,
                             provident sed molestiae.</p>
                         <hr>
-                        <h4>Precio $2500</h4>
+                        <h4>Precio $20</h4>
                         <div>
-                            <form action="">
+                            <form action="http://localhost:3000/checkout" method="POST">
+                                <input type="hidden" name="price" value="20">
+                                <input type="hidden" name="title" value="sweater rosa">
                                 <input type="submit" value="comprar ahora" class="btn btn-primary btn-block">
                             </form>
                         </div>
