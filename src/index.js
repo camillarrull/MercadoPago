@@ -45,6 +45,11 @@ app.post('/checkout', (req, res) => {
 		});
 })
 
+app.post('/webhook/payment', (req, res) => {
+	console.log(req);
+	res.status(200);
+});
+
 //SERVER
 /*
 app.listen(3000, () => {
