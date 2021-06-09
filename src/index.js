@@ -7,8 +7,8 @@ const mercadopago = require('mercadopago');
 const fs = require('fs');
 const { POINT_CONVERSION_COMPRESSED } = require('constants');
 
-var key = fs.readFileSync(__dirname + '/../test/server.roma.key');
-var cert = fs.readFileSync(__dirname + '/../test/server.roma.crt');
+var key = fs.readFileSync(__dirname + '/../test/selfsigned.key');
+var cert = fs.readFileSync(__dirname + '/../test/selfsigned.crt');
 var credentials = {
   key: key,
   cert: cert
