@@ -8,7 +8,7 @@ const fs = require('fs');
 
 var key = fs.readFileSync(__dirname + '/../ssl/selfsigned.key');
 var cert = fs.readFileSync(__dirname + '/../ssl/selfsigned.crt');
-var options = {
+var credentials = {
   key: key,
   cert: cert
 };
