@@ -16,8 +16,8 @@ const https = require('https');
 const host = '65.21.115.133';
 const port = 3000;
  
-const key	= readFileSync('/etc/letsencrypt/live/francoromaniello.com/privkey.pem', 'utf8');
-const cert = readFileSync('/etc/letsencrypt/live/francoromaniello.com/fullchain.pem', 'utf8');
+const key	= readFileSync('/etc/letsencrypt/live/francoromaniello.com-0001/privkey.pem', 'utf8');
+const cert = readFileSync('/etc/letsencrypt/live/francoromaniello.com-0001/fullchain.pem', 'utf8');
  /*
 const onConnect = () => {
 	return new Promise((resolve, reject)=> {
