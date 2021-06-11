@@ -1,70 +1,55 @@
+'use strict';
+ 
+const { readFileSync } = require('fs');
 const express = require('express');
-const https = require('https');
 const app = express();
-const bodyParser = require('body-parser')
-// SDK de Mercado Pago
-const mercadopago = require('mercadopago');
-const fs = require('fs');
-
-var key = fs.readFileSync(__dirname + '/../ssl/selfsigned.key');
-var cert = fs.readFileSync(__dirname + '/../ssl/selfsigned.crt');
-var credentials = {
-  key: key,
-  cert: cert
-};
-
-//middleware
-//app.use(bodyParser.urlencoded({ extended: false }));
-
-// Agrega credenciales
-//ACA IRIA LA REAL
-mercadopago.configure({
-	access_token: "APP_USR-4156353893147073-060817-79fb32f7510503cec7c76a70cc6da56a-772344190"
-});
-
-//ROUTES
-app.post('/checkout', (req, res) => {
-	// Crea un objeto de preferencia
-	let preference = {
-		items: [
-			{
-				title: req.body.title,
-				unit_price: parseInt(req.body.price),
-				quantity: 1,
-			}
-		]
-	};
-
-	mercadopago.preferences.create(preference)
-		.then(function (response) {
-			//ACA VA LA RTA DE NUESTRO SERVIDOR
-			
-			res.redirect(response.body.init_point)
-		}).catch(function (error) {
-			console.log(error);
-		});
-})
-
-app.post('/webhook/payment', (req, res) => {
-	console.log(req);
-	res.status(200);
-});
-
-app.get('/', (req, res) => {
-	console.log(req);
-	res.status(200);
-});
-
-//SERVER
-/*
-app.listen(3000, () => {
-	console.log('server on port 3000')
-})
-*/
-var httpsServer = https.createServer(credentials, app);
-httpsServer.listen(3000);
-
-console.log('[Cami-App] Hello There');
-console.log('File key: ' + __dirname + '/../ssl/selfsigned.key');
-console.log(typeof key);
-console.log(key);
+const cors = require('cors');
+const path = require('path');
+const https = require('https');
+//const { Connection } = require('./configs/db');
+//const router = require('./routes/routes');
+//const swaggerUi = require('swagger-ui-express'); 
+//const swaggerDocument = require('../swagger.json'); 
+ 
+//require('dotenv').config();
+ 
+const host = '127.0.0.1';
+const port = 3000;
+ 
+const key	= readFileSync('ssl/key.key', 'utf8');
+const cert = readFileSync('ssl/cert.crt', 'utf8');
+ /*
+const onConnect = () => {
+	return new Promise((resolve, reject)=> {
+	const { connection } = new Connection();
+	connection.authenticate()
+		.then( () => resolve('CONECTADO A DB') )
+		.catch( (error) => reject(`Error ${error}`) );
+	});
+}
+ 
+onConnect()
+	.then(async () => {*/
+	app.use(cors());
+	//app.use(express.static(path.join(__dirname, 'public/cs-dashboard')));
+	app.use(express.json());
+	//app.use('/', router);
+ 
+	app.get('*', (req, res) => { 
+		res.sendFile(path.join(__dirname, 'public/index.html'));
+	});
+	
+	app.post('/webhook/payment', (req, res) => {
+		console.log(req.body);
+		res.status(200).send('ok');
+	});
+	
+	app.get('/', (req, res) => {
+		console.log(req.body);
+		res.status(200).send('ok');
+	});
+	//app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument)); 
+	
+	const httpsServer = https.createServer({key, cert}, app);
+	httpsServer.listen(port, host, ()=> console.log(`Server Online port ${host}:${port}`));
+//}).catch( (err)=> console.log(err) );
