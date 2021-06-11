@@ -16,8 +16,8 @@ const https = require('https');
 const host = '65.21.115.133';
 const port = 3000;
  
-const key	= readFileSync('ssl/key.key', 'utf8');
-const cert = readFileSync('ssl/cert.crt', 'utf8');
+const key	= readFileSync('ssl/privkey.pem', 'utf8');
+const cert = readFileSync('ssl/fullchain.pem', 'utf8');
  /*
 const onConnect = () => {
 	return new Promise((resolve, reject)=> {
