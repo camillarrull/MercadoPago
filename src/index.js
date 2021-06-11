@@ -13,7 +13,7 @@ const https = require('https');
  
 //require('dotenv').config();
  
-const host = '127.0.0.1';
+const host = '65.21.115.133';
 const port = 3000;
  
 const key	= readFileSync('ssl/key.key', 'utf8');
