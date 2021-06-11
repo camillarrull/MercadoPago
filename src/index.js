@@ -14,7 +14,7 @@ const https = require('https');
 //require('dotenv').config();
  
 const host = '65.21.115.133';
-const port = 3000;
+const port = 8443;
  
 const key	= readFileSync('/etc/letsencrypt/live/francoromaniello.com-0001/privkey.pem', 'utf8');
 const cert = readFileSync('/etc/letsencrypt/live/francoromaniello.com-0001/fullchain.pem', 'utf8');
