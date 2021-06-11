@@ -36,7 +36,7 @@ onConnect()
 	//app.use('/', router);
  
 	app.get('*', (req, res) => { 
-		res.sendFile(path.join(__dirname, 'public/index.html'));
+		res.sendFile(path.join(__dirname, '../public/index.html'));
 	});
 	
 	app.post('/webhook/payment', (req, res) => {
