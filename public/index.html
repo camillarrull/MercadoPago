@@ -30,9 +30,11 @@
                         <hr>
                         <h4>Precio $20</h4>
                         <div>
-                            <form action="http://localhost:3000/checkout" method="POST">
-                                <input type="hidden" name="price" value="20">
-                                <input type="hidden" name="title" value="sweater rosa">
+                            <form action="http://localhost:2053/checkout" method="POST">
+                                <input type="hidden" id="item_id" name="item_id" value="1"><!-- id en la base de datos -->
+								<input type="text" id="name" name="name" value="nombre">
+								<input type="text" id="email" name="email" value="test@test.com">
+
                                 <input type="submit" value="comprar ahora" class="btn btn-primary btn-block">
                             </form>
                         </div>
